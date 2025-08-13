@@ -1,0 +1,61 @@
+.menu-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.breadcrumb {
+  color: gray;
+  font-size: 14px;
+}
+
+.categories {
+  margin: 15px 0;
+}
+
+.categories button {
+  border: none;
+  background: none;
+  margin-right: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+
+.categories button.active {
+  color: #e53935;
+  border-bottom: 2px solid #e53935;
+}
+
+.menu-section {
+  margin-top: 20px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.menu-info {
+  max-width: 60%;
+}
+
+.menu-info h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.menu-info p {
+  margin: 5px 0 0;
+  color: gray;
+  font-size: 14px;
+}
+
+.menu-item img {
+  width: 100px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+

@@ -1,0 +1,32 @@
+<div class="menu-container">
+
+  <!-- Fil d'Ariane -->
+  <p class="breadcrumb">Menu / Nom du restaurant</p>
+  <h2>Menu du restaurant</h2>
+
+  <!-- Catégories -->
+  <div class="categories">
+    <button 
+      *ngFor="let cat of categories" 
+      (click)="setCategory(cat)" 
+      [class.active]="activeCategory === cat">
+      {{ cat }}
+    </button>
+  </div>
+
+  <hr />
+
+  <!-- Plats -->
+  <div class="menu-section">
+    <ng-container *ngFor="let plat of filteredPlats()">
+      <div class="menu-item">
+        <div class="menu-info">
+          <h4>{{ plat.name }}</h4>
+          <p>{{ plat.desc }}</p>
+        </div>
+        <img [src]="plat.img" [alt]="plat.name" />
+      </div>
+    </ng-container>
+  </div>
+
+</div>

@@ -1,0 +1,71 @@
+.product-detail {
+    max-width: 600px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .product-image {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .description {
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .sides {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .sides button {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .sides button.active {
+    background-color: #e53935;
+    color: white;
+  }
+  
+  .addons label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 70px;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .actions .cancel {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+  }
+  
+  .actions .add {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+  }
+      

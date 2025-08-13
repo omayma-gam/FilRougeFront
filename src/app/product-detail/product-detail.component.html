@@ -1,0 +1,41 @@
+<div class="product-detail">
+
+    <!-- Image -->
+    <img [src]="product.image" [alt]="product.name" class="product-image" />
+  
+    <!-- Titre et description -->
+    <h2>{{ product.name }}</h2>
+    <p class="description">{{ product.description }}</p>
+  
+    <!-- Choix des côtés -->
+    <h4>Choisissez vos côtés</h4>
+    <div class="sides">
+      <button
+        *ngFor="let side of sides"
+        (click)="selectedSide = side"
+        [class.active]="selectedSide === side">
+        {{ side }}
+      </button>
+    </div>
+  
+    <!-- Add-ons -->
+    <h4>Add-ons</h4>
+    <div class="addons">
+      <label *ngFor="let addOn of addOns">
+        <input type="checkbox" [(ngModel)]="addOn.selected" />
+        {{ addOn.name }}
+      </label>
+    </div>
+  
+    <!-- Instructions spéciales -->
+    <h4>Special Instructions</h4>
+    <textarea [(ngModel)]="specialInstructions" placeholder="Write your instructions..."></textarea>
+  
+    <!-- Boutons -->
+    <div class="actions">
+      <button class="cancel">Cancel</button>
+      <button class="add" (click)="addToCart()">Add to Cart</button>
+    </div>
+  
+  </div>
+  

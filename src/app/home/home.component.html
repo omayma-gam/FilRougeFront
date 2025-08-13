@@ -1,0 +1,39 @@
+<div class="home-container">
+
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+    <input type="text" placeholder="Rechercher des restaurants ou des cuisines" />
+  </div>
+
+  <!-- Filtres -->
+  <div class="filters">
+    <button>Délai de livraison ▼</button>
+    <button>Notation ▼</button>
+    <button>Price Range ▼</button>
+    <button>Cuisine ▼</button>
+  </div>
+
+  <!-- Liste des restaurants -->
+  <div class="restaurant-grid">
+    <div class="restaurant-card" *ngFor="let r of restaurants">
+      <img [src]="r.img" [alt]="r.name" />
+      <h3>{{ r.name }}</h3>
+      <p>{{ r.location }}</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="social-icons">
+      <span>🐦</span>
+      <span>📸</span>
+      <span>📱</span>
+    </div>
+    <p>©2024 OmaFood. Tous droits réservés.</p>
+  </footer>
+</div>
