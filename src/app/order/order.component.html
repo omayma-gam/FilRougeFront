@@ -1,0 +1,44 @@
+<div class="order-container">
+  <nav class="breadcrumb">
+    <span></span>  <span>Your Order</span>
+  </nav>
+
+  <h2>Your Order</h2>
+
+  <!-- Restaurant -->
+  <div class="restaurant">
+    <img src="assets/nature.jpg" alt="Restaurant">
+    <div>
+      <h4>{{ restaurantName }}</h4>
+      <p>{{ items.length }} items</p>
+    </div>
+  </div>
+
+  <!-- Items -->
+  <h3>Items</h3>
+  <div *ngFor="let item of items" class="item">
+    <img [src]="item.image" [alt]="item.name">
+    <div>
+      <p class="item-name">{{ item.name }}</p>
+      <p class="quantity">Quantity: {{ item.quantity }}</p>
+    </div>
+  </div>
+
+  <!-- Payment -->
+  <h3>Payment</h3>
+  <div class="payment">
+    <input type="checkbox">
+    <span>{{ paymentMethod }}</span>
+  </div>
+
+  <!-- Order Summary -->
+  <h3>Order Summary</h3>
+  <div class="summary">
+    <p>Subtotal <span>DH{{ subtotal.toFixed(2) }}</span></p>
+    <p>Delivery Fee <span>DH{{ deliveryFee.toFixed(2) }}</span></p>
+    <p class="total">Total <span>DH{{ total.toFixed(2) }}</span></p>
+  </div>
+
+  <!-- Button -->
+  <button class="place-order">Place Order</button>
+</div>

@@ -1,0 +1,68 @@
+.order-container {
+  max-width: 500px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #a44;
+  margin-bottom: 15px;
+}
+
+.restaurant, .item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.restaurant img, .item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+.quantity {
+  font-size: 12px;
+  color: #a44;
+}
+
+.payment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summary {
+  margin-top: 10px;
+}
+
+.summary p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total {
+  font-weight: bold;
+}
+
+.place-order {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.place-order:hover {
+  background-color: #d32f2f;
+}

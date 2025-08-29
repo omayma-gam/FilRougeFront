@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { Router, RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
-import { AuthService } from '../auth.service';
+import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatCardActions } from '@angular/material/card';
+import { MatFormFieldModule, MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatIconModule, MatIcon } from '@angular/material/icon';
+import { AuthService } from '../Services/auth.service';
+import { Router, RouterModule } from '@angular/router'; 
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -17,15 +17,18 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatSnackBarModule
-  ],
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    MatFormField,
+    MatLabel,
+    MatIcon,
+    MatError,
+    MatCardActions
+],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss'] // ✅ 'styleUrls' au pluriel
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -71,4 +74,5 @@ export class LoginComponent {
   get isFormValid(): boolean {
     return this.loginForm?.valid ?? false;
   }
+
 }
