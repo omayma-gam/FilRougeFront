@@ -1,54 +1,58 @@
-<div class="container">
-  <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>Connexion</mat-card-title>
-    </mat-card-header>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4 login-card">
+    <h3 class="text-center mb-4 text-primary">Connexion</h3>
 
-    <mat-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" type="email">
-          <mat-icon matSuffix>email</mat-icon>
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-envelope"></i>
+          </span>
+          <input type="email" id="email" class="form-control"
+                 formControlName="email" placeholder="exemple@mail.com" autocomplete="email">
+        </div>
+        <div *ngIf="emailControl?.hasError('required')" class="text-danger small">
+          L'email est obligatoire
+        </div>
+        <div *ngIf="emailControl?.hasError('email')" class="text-danger small">
+          Veuillez entrer un email valide
+        </div>
+      </div>
 
-          <mat-error *ngIf="emailControl?.hasError('required')">
-            L'email est obligatoire
-          </mat-error>
-          <mat-error *ngIf="emailControl?.hasError('email')">
-            Veuillez entrer un email valide
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Mot de passe</mat-label>
-          <input matInput formControlName="password"
-                 [type]="hidePassword ? 'password' : 'text'">
-
-          <button mat-icon-button matSuffix
-                  (click)="hidePassword = !hidePassword"
-                  type="button">
-            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      <!-- Mot de passe -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-lock"></i>
+          </span>
+          <input [type]="hidePassword ? 'password' : 'text'" id="password"
+                 class="form-control" formControlName="password" placeholder="******" autocomplete="current-password">
+          <button class="btn btn-outline-secondary" type="button"
+                  (click)="hidePassword = !hidePassword">
+            <i class="bi" [ngClass]="hidePassword ? 'bi-eye-slash' : 'bi-eye'"></i>
           </button>
+        </div>
+        <div *ngIf="passwordControl?.hasError('required')" class="text-danger small">
+          Le mot de passe est obligatoire
+        </div>
+      </div>
 
-          <mat-error *ngIf="passwordControl?.hasError('required')">
-            Le mot de passe est obligatoire
-          </mat-error>
-        </mat-form-field>
+      <!-- Bouton -->
+      <button type="submit"
+              class="btn btn-primary w-100"
+              [disabled]="!isFormValid">
+        Se connecter
+      </button>
+    </form>
 
-        <button mat-raised-button
-                color="primary"
-                type="submit"
-                [disabled]="!isFormValid"
-                class="full-width">
-          Se connecter
-        </button>
-      </form>
-    </mat-card-content>
-
-    <mat-card-actions>
+    <!-- Lien inscription -->
+    <div class="text-center mt-3">
       <span>Vous n'avez pas de compte ? </span>
-      <a mat-button color="primary" routerLink="/register">S'inscrire</a>
-    </mat-card-actions>
-  </mat-card>
-</div> 
+      <a routerLink="/register" class="text-decoration-none text-primary fw-bold">S'inscrire</a>
+    </div>
+  </div>
+</div>

@@ -11,9 +11,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProductDetailComponent {
   product = {
-    name: 'Classic Burger',
+    name: 'burger',
     description: `Notre burger signature avec un steak haché de bœuf juteux, du cheddar fondu, de la laitue croquante, des tomates mûres et notre sauce spéciale, le tout niché dans un pain aux graines de sésame grillé.`,
-    image: 'assets/classic-burger.jpg'
+    image: 'assets/burger.jpg'
   };
 
   sides = ['Frites', 'Onion Rings', 'Salad'];

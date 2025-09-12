@@ -70,7 +70,8 @@
               "buildTarget": "fil_rouge:build:production"
             },
             "development": {
-              "buildTarget": "fil_rouge:build:development"
+              "buildTarget": "fil_rouge:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

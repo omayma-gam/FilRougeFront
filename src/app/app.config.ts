@@ -7,7 +7,7 @@ import { provideRouter } from '@angular/router';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideRouter(routes)
   ]
 };

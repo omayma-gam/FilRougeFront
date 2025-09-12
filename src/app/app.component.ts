@@ -12,7 +12,7 @@ import { MenuuComponent } from './menuu/menuu.component';
   standalone: true,
   imports: [NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'Reastaurants App';

@@ -13,5 +13,5 @@ export const routes: Routes = [
   {path:'menu',component:MenuuComponent},
   {path:'detail',component:ProductDetailComponent},
   {path:'order',component:OrderComponent},
-  {path: '',component:HomeComponent},
+  {path: '',component:RegisterComponent},
 ]

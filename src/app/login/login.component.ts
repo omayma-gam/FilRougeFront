@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatCardActions } from '@angular/material/card';
-import { MatFormFieldModule, MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { MatIconModule, MatIcon } from '@angular/material/icon';
 import { AuthService } from '../Services/auth.service';
 import { Router, RouterModule } from '@angular/router'; 
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -16,19 +11,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
-    MatCard,
-    MatCardHeader,
-    MatCardTitle,
-    MatCardContent,
-    MatFormField,
-    MatLabel,
-    MatIcon,
-    MatError,
-    MatCardActions
+    RouterModule
 ],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'] // ✅ 'styleUrls' au pluriel
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   loginForm: FormGroup;
