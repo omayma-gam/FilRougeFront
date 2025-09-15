@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-
+import {TestService} from '../Services/test.service';
+interface Restaurant{
+  name :string,
+  description:string,
+  adresse:string,
+  phone:string,
+  email:string;
+}
 
 @Component({
   selector: 'app-home',
@@ -21,4 +28,14 @@ export class HomeComponent {
     { name: 'The Sushi Bar', location: 'LA VILLA', img: 'assets/shawarma.jpg' },
     { name: 'The Mexican Cantina', location: 'Manhattan Plaza', img: 'assets/table vue.jpg' },
   ];
+  ListDeRestaurants!:Restaurant[];
+
+  constructor(private service:TestService) {
+  }
+  getRestaurant(){
+    this.service.findByName().subscribe((data)=>{
+      this.ListDeRestaurants=data;
+    })
+  }
+
 }
