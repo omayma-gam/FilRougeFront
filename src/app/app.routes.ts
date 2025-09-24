@@ -5,6 +5,8 @@ import { MenuuComponent } from './menuu/menuu.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { OrderComponent } from './order/order.component';
 import { Routes } from '@angular/router';
+import {AboutComponent} from './about/about.component';
+import {FormPlatsComponent} from './form-plats/form-plats.component';
 
 export const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -13,5 +15,7 @@ export const routes: Routes = [
   {path:'menu',component:MenuuComponent},
   {path:'detail',component:ProductDetailComponent},
   {path:'order',component:OrderComponent},
+  {path:'about',component:AboutComponent},
+  {path:'form',component:FormPlatsComponent},
   {path: '',component:RegisterComponent},
 ]

@@ -1,0 +1,55 @@
+<form>
+  <div class="mb-3">
+    <label for="dishName" class="form-label">Nom du plat</label>
+    <input type="text" class="form-control" id="dishName" name="name" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="dishDescription" class="form-label">Description</label>
+    <textarea class="form-control" id="dishDescription" name="description" rows="3" required></textarea>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <label for="dishPrice" class="form-label">Prix (€)</label>
+      <input type="number" class="form-control" id="dishPrice" name="price" step="0.01" min="0" required>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="dishCategory" class="form-label">Catégorie</label>
+      <select class="form-select" id="dishCategory" name="category" required>
+        <option value="">Choisir...</option>
+        <option>Entrée</option>
+        <option>Plat principal</option>
+        <option>Dessert</option>
+        <option>Boisson</option>
+      </select>
+    </div>
+
+
+  </div>
+
+  <div class="mb-3">
+    <label for="dishIngredients" class="form-label">Ingrédients</label>
+    <input type="text" class="form-control" id="dishIngredients" name="ingredients" placeholder="ex: poulet, citron, poivre">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label d-block">Options</label>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="isVegetarian" name="isVegetarian" value="1">
+      <label class="form-check-label" for="isVegetarian">Végétarien</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="isSpicy" name="isSpicy" value="1">
+      <label class="form-check-label" for="isSpicy">Épicé</label>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="dishImage" class="form-label">Image du plat</label>
+    <input class="form-control" type="file" id="dishImage" name="image" accept="image/*">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Enregistrer le plat</button>
+</form>
