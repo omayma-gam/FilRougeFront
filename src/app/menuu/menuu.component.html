@@ -1,8 +1,18 @@
 <div class="menu-container">
 
   <!-- Fil d'Ariane -->
-  <p class="breadcrumb">Menu / Nom du restaurant</p>
+  <p class="breadcrumb">Menu / {{ restaurantName }}</p>
   <h2>Menu du restaurant</h2>
+
+  <!-- Barre de recherche -->
+  <div class="search-section">
+    <input 
+      type="text" 
+      [(ngModel)]="searchTerm" 
+      (input)="onSearchChange()" 
+      placeholder="Rechercher un plat..."
+      class="search-input">
+  </div>
 
   <!-- Catégories -->
   <div class="categories">
@@ -10,23 +20,53 @@
       *ngFor="let cat of categories" 
       (click)="setCategory(cat)" 
       [class.active]="activeCategory === cat">
-      {{ cat }}
+      {{ getCategoryLabel(cat) }}
     </button>
   </div>
 
   <hr />
 
+  <!-- Messages d'état -->
+  <div class="loading" *ngIf="isLoading">
+    Chargement des plats...
+  </div>
+
+  <div class="error" *ngIf="error">
+    {{ error }}
+  </div>
+
   <!-- Plats -->
-  <div class="menu-section">
-    <ng-container *ngFor="let plat of filteredPlats()">
+  <div class="menu-section" *ngIf="!isLoading && !error">
+    <div class="plats-count" *ngIf="filteredPlats.length > 0">
+      {{ filteredPlats.length }} plat(s) trouvé(s)
+    </div>
+    
+    <ng-container *ngFor="let plat of filteredPlats">
       <div class="menu-item">
         <div class="menu-info">
           <h4>{{ plat.name }}</h4>
-          <p>{{ plat.desc }}</p>
+          <p class="description">{{ plat.description }}</p>
+          <div class="plat-details">
+            <span class="price">€{{ plat.prix }}</span>
+            <span class="category-badge">{{ getCategoryLabel(plat.category) }}</span>
+          </div>
+          <div class="allergenes" *ngIf="plat.allergenes">
+            <strong>Allergènes:</strong> {{ plat.allergenes }}
+          </div>
         </div>
-        <img [src]="plat.img" [alt]="plat.name" />
+        <div class="menu-image">
+          <img [src]="plat.photo || 'assets/default-food.jpg'" 
+               [alt]="plat.name" 
+               onerror="this.src='assets/default-food.jpg'" />
+        </div>
       </div>
     </ng-container>
+    
+    <div class="empty-state" *ngIf="filteredPlats.length === 0">
+      <p *ngIf="searchTerm">Aucun plat trouvé pour "{{ searchTerm }}"</p>
+      <p *ngIf="!searchTerm && activeCategory !== 'Tous'">Aucun plat dans la catégorie "{{ getCategoryLabel(activeCategory) }}"</p>
+      <p *ngIf="!searchTerm && activeCategory === 'Tous'">Aucun plat disponible</p>
+    </div>
   </div>
 
 </div>

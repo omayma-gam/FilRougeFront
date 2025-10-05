@@ -1,32 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-menuu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './menuu.component.html',
   styleUrls: ['./menuu.component.css']
 })
-export class MenuuComponent {
+export class MenuuComponent implements OnInit {
+  filteredPlats: any[] = [];
+  isLoading = false;
+  error = '';
+  searchTerm = '';
   activeCategory = 'Tous';
+  categories = ['Tous', 'VEGETARIEN', 'VEGAN', 'VIANDE', 'POISSON', 'DESSERT', 'BOISSON'];
+  restaurantName = 'Restaurant';
 
-  categories = ['Tous', 'Plats', 'Boissons'];
+  constructor() {}
 
-  plats = [
-    { name: 'Pizza Margherita', desc: 'Sauce tomate, mozzarella, basilic frais', img: 'assets/piz.jpg', type: 'Plats' },
-    { name: 'Pâtes Carbonara', desc: 'Pâtes, œufs, fromage, lardons, poivre noir', img: 'assets/sha.jpg', type: 'Plats' },
-    { name: 'Salade César', desc: 'Laitue romaine, croûtons, parmesan, sauce César', img: 'assets/burger2.jpg', type: 'Plats' },
-    { name: 'Coca-Cola', desc: 'Boisson gazeuse rafraîchissante', img: 'assets/bois1.jpg', type: 'Boissons' },
-    { name: 'Eau Minérale', desc: 'Eau plate ou pétillante', img: 'assets/bois2.jpg', type: 'Boissons' },
-  ];
-
-  filteredPlats() {
-    if (this.activeCategory === 'Tous') return this.plats;
-    return this.plats.filter(p => p.type === this.activeCategory);
+  ngOnInit(): void {
+    // Simplified - no external service calls
+    this.filteredPlats = [
+      {
+        id: 1,
+        name: 'Pizza Margherita',
+        description: 'Pizza traditionnelle avec tomates et mozzarella',
+        prix: 12.50,
+        category: 'VIANDE',
+        available: true,
+        photo: 'assets/default-food.jpg'
+      },
+      {
+        id: 2,
+        name: 'Salade César',
+        description: 'Salade fraîche avec croûtons et parmesan',
+        prix: 9.90,
+        category: 'VEGETARIEN',
+        available: true,
+        photo: 'assets/default-food.jpg'
+      }
+    ];
   }
 
-  setCategory(cat: string) {
-    this.activeCategory = cat;
+  setCategory(category: string): void {
+    this.activeCategory = category;
+  }
+
+  onSearchChange(): void {
+    // Simple search implementation
+  }
+
+  getCategoryLabel(category: string): string {
+    return category;
   }
 }

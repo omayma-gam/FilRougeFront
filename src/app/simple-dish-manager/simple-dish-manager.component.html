@@ -1,0 +1,98 @@
+<div class="simple-container">
+  <h1>🍽️ Simple Dish Manager</h1>
+  
+  <!-- Message Display -->
+  <div class="message" *ngIf="showMessage && message" [class.success]="message.includes('successfully')" [class.error]="message.includes('Error') || message.includes('Failed')">
+    {{ message }}
+  </div>
+
+  <!-- Simple Form -->
+  <div class="form-section">
+    <h2>{{ isEditing ? 'Edit Dish' : 'Add New Dish' }}</h2>
+    
+    <form (ngSubmit)="onSubmit()" class="simple-form">
+      <div class="form-group">
+        <label>Dish Name *</label>
+        <input type="text" [(ngModel)]="currentDish.name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Description *</label>
+        <textarea [(ngModel)]="currentDish.description" name="description" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Price (€) *</label>
+        <input type="number" [(ngModel)]="currentDish.prix" name="prix" step="0.01" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select [(ngModel)]="currentDish.category" name="category">
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Photo URL (optional)</label>
+        <input type="url" [(ngModel)]="currentDish.photo" name="photo" placeholder="https://example.com/image.jpg">
+      </div>
+
+      <div class="form-group">
+        <label>Allergenes (optional)</label>
+        <input type="text" [(ngModel)]="currentDish.allergenes" name="allergenes" placeholder="e.g., gluten, nuts, dairy">
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input type="checkbox" [(ngModel)]="currentDish.available" name="available">
+          Available
+        </label>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" class="btn-primary">
+          {{ isEditing ? 'Update Dish' : 'Add Dish' }}
+        </button>
+        <button type="button" (click)="resetForm()" class="btn-secondary">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Simple Dishes List -->
+  <div class="dishes-section">
+    <h2>My Dishes ({{ dishes.length }})</h2>
+    
+    <div class="dishes-list">
+      <div *ngFor="let dish of dishes" class="dish-card">
+        <div class="dish-info">
+          <h3>{{ dish.name }}</h3>
+          <p>{{ dish.description }}</p>
+          <div class="dish-details">
+            <span class="price">€{{ dish.prix }}</span>
+            <span class="category">{{ dish.category }}</span>
+            <span class="status" [class.available]="dish.available" [class.unavailable]="!dish.available">
+              {{ dish.available ? 'Available' : 'Not Available' }}
+            </span>
+          </div>
+          <div class="allergenes" *ngIf="dish.allergenes">
+            <small><strong>Allergenes:</strong> {{ dish.allergenes }}</small>
+          </div>
+        </div>
+        <div class="dish-image" *ngIf="dish.photo">
+          <img [src]="dish.photo" [alt]="dish.name" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
+        </div>
+        <div class="dish-actions">
+          <button (click)="editDish(dish)" class="btn-edit">Edit</button>
+          <button (click)="deleteDish(dish.id!)" class="btn-delete">Delete</button>
+        </div>
+      </div>
+      
+      <div *ngIf="dishes.length === 0" class="no-dishes">
+        <p>No dishes found. Add your first dish!</p>
+      </div>
+    </div>
+  </div>
+</div>
