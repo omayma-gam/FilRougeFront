@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {TestService} from '../Services/test.service';
 interface Restaurant{
   name :string,
@@ -13,7 +13,7 @@ interface Restaurant{
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule], // ✅ Pour *ngFor et *ngIf
+  imports: [CommonModule, RouterLink], // ✅ Pour *ngFor et *ngIf
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
